@@ -119,6 +119,7 @@
 .imageSrc-svg {
   width: 1rem;
   height: 1rem;
+  border-radius: 50%;
 }
 
 .headingContainer-para {
@@ -180,15 +181,18 @@
 
 .user-available {
   border-radius: 50%;
-  width: 0.8rem;
+  width: 0.5rem;
   border: 2px solid #fff;
-  height: 0.8rem;
+  height: 0.5rem;
   background-color: grey;
   position: absolute;
   top: 0.9rem;
   right: -0.1rem;
 }
 
+.present {
+  background-color: gold;
+}
 .card-heading {
   font-weight: 600;
   background-color: #fff;

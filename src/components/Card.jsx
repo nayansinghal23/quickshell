@@ -1,16 +1,22 @@
 import React from "react";
-import { exclaimationIcon } from "../assets";
+import { exclaimationIcon, persons } from "../assets";
 
-const Card = ({ ticket }) => {
+const Card = ({ ticket, personImg, available, type }) => {
   // ticket -> userId, priority
   return (
     <div className="card-container">
       <div className="card-title-userImage-wrapper">
         <p className="card-title">{ticket?.id}</p>
-        <div className="user-image-container">
-          <img src={exclaimationIcon} alt="userImage" className="user-image" />
-          <div className="user-available" />
-        </div>
+        {type !== "user" && (
+          <div className="user-image-container">
+            <img
+              src={persons[personImg - 1]}
+              alt="userImage"
+              className="user-image"
+            />
+            <div className={`user-available ${available && "present"}`} />
+          </div>
+        )}
       </div>
       <p className="card-heading">
         {ticket?.title?.length <= 50

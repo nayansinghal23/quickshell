@@ -13,6 +13,14 @@ import highIcon from "./svg/highIcon.svg";
 import mediumIcon from "./svg/mediumIcon.svg";
 import lowIcon from "./svg/lowIcon.svg";
 
+// person images imports
+
+import person1 from "./person/person1.jpg";
+import person2 from "./person/person2.jpg";
+import person3 from "./person/person3.jpeg";
+import person4 from "./person/person4.jpg";
+import person5 from "./person/person5.jpeg";
+
 export {
   lowIcon,
   mediumIcon,
@@ -29,3 +37,5 @@ export {
   threeDotsIcon,
   circleIcon,
 };
+
+export const persons = [person1, person2, person3, person4, person5];

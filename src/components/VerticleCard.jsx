@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import { plusIcon, threeDotsIcon } from "../assets";
 
-const VerticleCard = ({ heading, statusContent, imageSrc }) => {
+const VerticleCard = ({ heading, statusContent, imageSrc, users, type }) => {
   return (
     <div className="verticleCard-container">
       <div className="verticleCard-headingContainer">
@@ -21,7 +21,15 @@ const VerticleCard = ({ heading, statusContent, imageSrc }) => {
         </div>
       </div>
       {statusContent?.map((ticket) => (
-        <Card ticket={ticket} key={ticket?.id} />
+        <Card
+          ticket={ticket}
+          key={ticket?.id}
+          personImg={ticket?.userId[ticket?.userId?.length - 1] - "0"}
+          available={
+            users[ticket?.userId[ticket?.userId?.length - 1] - "1"]?.available
+          }
+          type={type}
+        />
       ))}
     </div>
   );

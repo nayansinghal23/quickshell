@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { removeDuplicatesInArray } from "../helpers/removeDuplicatesInArray";
 import Status from "./Status";
 import Priority from "./Priority";
+import User from "./User";
 
 const MainContent = () => {
-  const [tickets, setTickets] = useState([]);
+  const [users, setUsers] = useState([]);
   const [status, setStatus] = useState({
     backlog: [],
     todo: [],
@@ -19,6 +20,13 @@ const MainContent = () => {
     3: [],
     4: [],
   });
+  const [userTasks, setUserTasks] = useState({
+    usr1: [],
+    usr2: [],
+    usr3: [],
+    usr4: [],
+    usr5: [],
+  });
 
   useEffect(() => {
     fetch("https://api.quicksell.co/v1/internal/frontend-assignment")
@@ -26,8 +34,7 @@ const MainContent = () => {
         return data.json();
       })
       .then(({ tickets, users }) => {
-        setTickets(tickets);
-        // console.log(users);
+        setUsers(users);
         tickets?.forEach((ticket) => {
           let temp = status;
           if (ticket?.status === "Todo") {
@@ -56,6 +63,20 @@ const MainContent = () => {
             dummy["4"].push(ticket);
           }
           setPriority(dummy);
+
+          let fakeTask = userTasks;
+          if (ticket?.userId === "usr-1") {
+            fakeTask["usr1"].push(ticket);
+          } else if (ticket?.userId === "usr-2") {
+            fakeTask["usr2"].push(ticket);
+          } else if (ticket?.userId === "usr-3") {
+            fakeTask["usr3"].push(ticket);
+          } else if (ticket?.userId === "usr-4") {
+            fakeTask["usr4"].push(ticket);
+          } else {
+            fakeTask["usr5"].push(ticket);
+          }
+          setUserTasks(fakeTask);
         });
         // removing duplicates in array
         for (const key in status) {
@@ -64,7 +85,9 @@ const MainContent = () => {
         for (const key in priority) {
           priority[key] = removeDuplicatesInArray(priority[key]);
         }
-        console.log(priority);
+        for (const key in userTasks) {
+          userTasks[key] = removeDuplicatesInArray(userTasks[key]);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -73,8 +96,9 @@ const MainContent = () => {
 
   return (
     <div className="mainContent-container">
-      {/* <Status status={status} /> */}
-      <Priority priority={priority} />
+      {/* <Status status={status} users={users} type="status" /> */}
+      <Priority priority={priority} users={users} type="priority" />
+      {/* <User userTasks={userTasks} users={users} type="user" /> */}
     </div>
   );
 };
