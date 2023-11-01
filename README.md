@@ -25,6 +25,8 @@ CheckLists ->
 
 12) Further, VertileCard Component also has a repeated Card Component.
 
+13) Created Priority Component as well.
+
 
 How to set-up your environment :-
 

@@ -8,8 +8,16 @@ import pendingIcon from "./svg/pendingIcon.svg";
 import tickIcon from "./svg/tickIcon.svg";
 import verticleHalfFillIcon from "./svg/verticleHalfFillIcon.svg";
 import crossIcon from "./svg/crossIcon.svg";
+import urgentIcon from "./svg/urgentIcon.svg";
+import highIcon from "./svg/highIcon.svg";
+import mediumIcon from "./svg/mediumIcon.svg";
+import lowIcon from "./svg/lowIcon.svg";
 
 export {
+  lowIcon,
+  mediumIcon,
+  highIcon,
+  urgentIcon,
   crossIcon,
   sliderIcon,
   tickIcon,

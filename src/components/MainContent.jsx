@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { removeDuplicatesInArray } from "../helpers/removeDuplicatesInArray";
 import Status from "./Status";
+import Priority from "./Priority";
 
 const MainContent = () => {
   const [tickets, setTickets] = useState([]);
@@ -10,6 +11,13 @@ const MainContent = () => {
     inprogress: [],
     done: [],
     canceled: [],
+  });
+  const [priority, setPriority] = useState({
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
   });
 
   useEffect(() => {
@@ -34,12 +42,29 @@ const MainContent = () => {
             temp["canceled"].push(ticket);
           }
           setStatus(temp);
+
+          let dummy = priority;
+          if (ticket?.priority === 0) {
+            dummy["0"].push(ticket);
+          } else if (ticket?.priority === 1) {
+            dummy["1"].push(ticket);
+          } else if (ticket?.priority === 2) {
+            dummy["2"].push(ticket);
+          } else if (ticket?.priority === 3) {
+            dummy["3"].push(ticket);
+          } else {
+            dummy["4"].push(ticket);
+          }
+          setPriority(dummy);
         });
         // removing duplicates in array
         for (const key in status) {
           status[key] = removeDuplicatesInArray(status[key]);
         }
-        // console.log(status);
+        for (const key in priority) {
+          priority[key] = removeDuplicatesInArray(priority[key]);
+        }
+        console.log(priority);
       })
       .catch((error) => {
         console.log(error);
@@ -48,7 +73,8 @@ const MainContent = () => {
 
   return (
     <div className="mainContent-container">
-      <Status status={status} />
+      {/* <Status status={status} /> */}
+      <Priority priority={priority} />
     </div>
   );
 };
