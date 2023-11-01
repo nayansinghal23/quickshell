@@ -23,10 +23,21 @@ CheckLists ->
 
 10) Status Component has a VerticleCard Component which will be used again and again in this project, so I decided to make it as a separate component and pass props to it.
 
-12) Further, VertileCard Component also has a repeated Card Component.
+12) Further, VerticleCard Component also has a repeated Card Component.
 
 13) Created Priority Component as well.
 
+14) User Component also made.
+
+15) UserImages also added.
+
+16) Checked whether user is active or not.
+
+17) Implementing Navbar State Management.
+
+18) Implemented Priority functionality.
+
+19) Implemented Title functionality.
 
 How to set-up your environment :-
 

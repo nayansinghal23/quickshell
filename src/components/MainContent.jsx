@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { removeDuplicatesInArray } from "../helpers/removeDuplicatesInArray";
 import Status from "./Status";
 import Priority from "./Priority";
 import User from "./User";
+import StateContext from "../context/StateContext";
 
 const MainContent = () => {
+  const { groupingValue } = useContext(StateContext);
+
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState({
     backlog: [],
@@ -96,9 +99,15 @@ const MainContent = () => {
 
   return (
     <div className="mainContent-container">
-      {/* <Status status={status} users={users} type="status" /> */}
-      <Priority priority={priority} users={users} type="priority" />
-      {/* <User userTasks={userTasks} users={users} type="user" /> */}
+      {groupingValue === "status" && (
+        <Status status={status} users={users} type="status" />
+      )}
+      {groupingValue === "user" && (
+        <User userTasks={userTasks} users={users} type="user" />
+      )}
+      {groupingValue === "priority" && (
+        <Priority priority={priority} users={users} type="priority" />
+      )}
     </div>
   );
 };
